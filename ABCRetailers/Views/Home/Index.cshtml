@@ -1,0 +1,164 @@
+﻿@model ABCRetailers.Models.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid min-vh-100 text-light tech-bg py-4">
+
+    <!-- Animated Heading -->
+    <h1 class="display-4 fw-bold mb-5 text-accent animate__animated animate__fadeInDown">
+        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+    </h1>
+
+    <!-- Dashboard Cards -->
+    <div class="row g-4">
+        <!-- Customers -->
+        <div class="col-md-4">
+            <div class="card tech-card text-center p-4"
+                 onclick="location.href='@Url.Action("Index", "Customer")'"
+                 style="cursor:pointer;">
+                <i class="fas fa-users fa-3x mb-3 text-accent"></i>
+                <h5 class="fw-bold">Customers</h5>
+                <h2 class="display-6">@Model.CustomerCount</h2>
+                <span class="btn btn-outline-accent btn-sm mt-2">Manage Customers</span>
+            </div>
+        </div>
+
+        <!-- Products -->
+        <div class="col-md-4">
+            <div class="card tech-card text-center p-4"
+                 onclick="location.href='@Url.Action("Index", "Product")'"
+                 style="cursor:pointer;">
+                <i class="fas fa-box-open fa-3x mb-3 text-success"></i>
+                <h5 class="fw-bold">Products</h5>
+                <h2 class="display-6">@Model.ProductCount</h2>
+                <span class="btn btn-outline-success btn-sm mt-2">Manage Products</span>
+            </div>
+        </div>
+
+        <!-- Orders -->
+        <div class="col-md-4">
+            <div class="card tech-card text-center p-4"
+                 onclick="location.href='@Url.Action("Index", "Order")'"
+                 style="cursor:pointer;">
+                <i class="fas fa-shopping-cart fa-3x mb-3 text-warning"></i>
+                <h5 class="fw-bold">Orders</h5>
+                <h2 class="display-6">@Model.OrderCount</h2>
+                <span class="btn btn-outline-warning btn-sm mt-2">Manage Orders</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="mt-5">
+        <h3 class="text-light mb-4"><i class="fas fa-star text-accent"></i> Featured Products</h3>
+        <div class="row g-4">
+            @if (!Model.FeaturedProducts.Any())
+            {
+                <div class="col-12">
+                    <div class="alert alert-dark-glass">No featured products available.</div>
+                </div>
+            }
+            else
+            {
+                @foreach (var p in Model.FeaturedProducts)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card tech-card h-100">
+                            @if (!string.IsNullOrEmpty(p.ImageUrl))
+                            {
+                                <img src="@p.ImageUrl" class="card-img-top rounded-top" style="height:180px; object-fit:cover;" />
+                            }
+                            else
+                            {
+                                <div class="d-flex justify-content-center align-items-center bg-dark" style="height:180px;">
+                                    <i class="fas fa-image fa-3x text-muted"></i>
+                                </div>
+                            }
+                            <div class="card-body text-center">
+                                <h6 class="fw-bold text-white">@p.ProductName</h6>
+                                <p class="product-price">@p.Price.ToString("C")</p>
+                                <a href="@Url.Action("Index", "Product")" class="btn btn-outline-light btn-sm">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Animated Background */
+    .tech-bg {
+        background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1b2735);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+    }
+
+    }
+
+    /* Accent Colors */
+    .text-accent {
+        color: #4db8ff !important;
+        font-weight: 600;
+    }
+
+    .btn-outline-accent {
+        border-color: #4db8ff;
+        color: #4db8ff;
+    }
+
+        .btn-outline-accent:hover {
+            background: #4db8ff;
+            color: #000;
+        }
+
+    .text-success {
+        color: #4dd17b !important;
+        font-weight: 600;
+    }
+
+    .text-warning {
+        color: #ffcc4d !important;
+        font-weight: 600;
+    }
+
+    /* Cards */
+    .tech-card {
+        background: #1c1f26;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 0.75rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        color: #f1f1f1; /* Bright default text inside cards */
+    }
+
+        .tech-card h5 {
+            color: #ffffff;
+        }
+
+        .tech-card h2 {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+
+    /* Featured Product Price */
+    .product-price {
+        color: #4db8ff;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    /* Alerts */
+    .alert-dark-glass {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #ddd;
+    }
+</style>
