@@ -584,3 +584,4 @@ C:\Users\lab_services_student\Desktop\CLDVsem2\ABCRetailers\obj\Debug\net9.0\ref
 C:\Users\lab_services_student\Desktop\CLDVsem2\ABCRetailers\obj\Debug\net9.0\ABCRetailers.pdb
 C:\Users\lab_services_student\Desktop\CLDVsem2\ABCRetailers\obj\Debug\net9.0\ABCRetailers.genruntimeconfig.cache
 C:\Users\lab_services_student\Desktop\CLDVsem2\ABCRetailers\obj\Debug\net9.0\ref\ABCRetailers.dll
+C:\Users\lab_services_student\Desktop\CLDVsem2\ABCretailers\obj\Debug\net9.0\ABCRetailers.sourcelink.json

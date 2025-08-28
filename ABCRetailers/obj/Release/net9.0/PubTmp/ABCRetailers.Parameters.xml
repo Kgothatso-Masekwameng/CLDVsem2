@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="ABCretailersCLDV" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="ST10440843" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\lab_services_student\\Desktop\\CLDVsem2\\ABCretailers\\obj\\Release\\net9\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>

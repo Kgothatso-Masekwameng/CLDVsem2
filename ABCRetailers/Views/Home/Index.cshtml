@@ -49,6 +49,20 @@
         </div>
     </div>
 
+    <!-- First Time Setup -->
+    @if ((ViewBag.CustomerCount ?? 0) == 0 && (ViewBag.ProductCount ?? 0) == 0 && (ViewBag.OrderCount ?? 0) == 0)
+    {
+        <div class="alert alert-warning shadow-sm">
+            <h5 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> First Time Setup</h5>
+            <p>Click the button below to initialize Azure Storage tables and blob containers.</p>
+            <form asp-action="InitializeStorage" method="post">
+                <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-cog"></i> Initialize Azure Storage
+                </button>
+            </form>
+        </div>
+    }
+
     <!-- Featured Products -->
     <div class="mt-5">
         <h3 class="text-light mb-4"><i class="fas fa-star text-accent"></i> Featured Products</h3>
